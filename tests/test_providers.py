@@ -1,3 +1,5 @@
+from importlib import import_module
+
 from waldur_multicloud import __version__, is_supported_provider, list_supported_providers
 
 
@@ -9,6 +11,11 @@ def test_supported_provider_list() -> None:
 
 def test_unknown_provider_is_rejected() -> None:
     assert not is_supported_provider("unknown")
+
+
+def test_provider_plugin_packages_are_importable() -> None:
+    for provider in list_supported_providers():
+        import_module(f"waldur_site_agent_{provider}")
 
 
 def test_package_version() -> None:
