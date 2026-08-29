@@ -8,6 +8,7 @@ __all__ = [
     "SUPPORTED_PROVIDERS",
     "is_supported_provider",
     "list_supported_providers",
+    "__version__",
 ]
 
 try:
