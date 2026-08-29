@@ -5,7 +5,7 @@ description = "Meta repository for multi-cloud site-agent experiments"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "dimapin" }]
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 dependencies = []
 
 [dependency-groups]
