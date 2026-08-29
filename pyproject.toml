@@ -1,0 +1,28 @@
+[project]
+name = "waldur-multicloud"
+version = "0.1.0"
+description = "Meta repository for multi-cloud site-agent experiments"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "dimapin" }]
+license = { file = "LICENSE" }
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/waldur_multicloud"]
