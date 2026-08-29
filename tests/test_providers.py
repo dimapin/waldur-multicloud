@@ -12,4 +12,9 @@ def test_unknown_provider_is_rejected() -> None:
 
 
 def test_package_version() -> None:
-    assert __version__ == "0.1.0"
+    from importlib.metadata import PackageNotFoundError, version as dist_version
+
+    try:
+        assert __version__ == dist_version("waldur-multicloud")
+    except PackageNotFoundError:
+        assert isinstance(__version__, str) and __version__
