@@ -6,3 +6,11 @@
   eine EXPLIZITE Config-Entscheidung, keine stille im Code.
 - Vor Implementierungsstart: SDK-Semantik gegen echten Account
   verifizieren (Phase 2 nicht ohne Grund).
+
+## Limits (D-004)
+- Vertrags-Kontingente (Cores, RAM, VMs je Vertrag): vorhanden;
+  nach bisherigem Stand über die Contract-API abfragbar — ZU ERHEBEN
+  (Endpoint, Felder, ob Auslastung mitgeliefert wird).
+- Skalierungsdecke: Kontingent je Vertrag ist Vertragsverhandlung mit
+  Vorlauf; ggf. Sharding über mehrere Verträge als späterer
+  Decision-Punkt.

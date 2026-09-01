@@ -30,13 +30,13 @@ Arbeitsgrundlage: Lies zuerst AGENTS.md im Projektroot.
 3. Prüfe konkret, was das DigitalOcean-Plugin tatsächlich implementiert
    (voll provisionierend oder nur Sync?) und benenne die beste
    Referenz-Blaupause für unsere Zwecke.
-4. Schreibe/aktualisiere docs/contracts/site-agent-api.md. Jede Aussage
+4. Schreibe/aktualisiere docs/contracts/ (Governance: README.md dort; normativ: conventions.md + capabilities.md mit CON-/CAP-IDs; beschreibend: upstream-api.md). Jede Aussage
    dort trägt eine Quellenangabe: Dateipfad + Zeilenbereich + Commit.
 
 ## Regeln
 
 - Du änderst NIE Code im Referenz-Repo und NIE Code in plugins/.
-  Dein einziges Schreibziel ist docs/contracts/ und NOTES.md.
+  Dein einziges Schreibziel ist docs/contracts/upstream-api.md, die zugehoerige CHANGELOG-Zeile und NOTES.md. conventions.md und capabilities.md sind normativ und NICHT dein Gebiet — Aenderungsbedarf dort meldest du als Decision-Vorschlag.
 - Keine Aussage ohne Fundstelle. Wenn du etwas nicht im Code findest,
   schreibe "NICHT GEFUNDEN" statt es zu erraten.
 - Widersprüche zwischen Code und Doku: Code gewinnt, Widerspruch
