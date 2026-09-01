@@ -26,3 +26,4 @@ Ein Task ist erst fertig, wenn dieser Selbstbericht abgegeben ist:
 Befunde — auch unbequeme, auch solche, die frühere eigene Arbeit
 infrage stellen — gehören unaufgefordert in die Antwort und, wenn
 dauerhaft relevant, nach NOTES.md.
+
