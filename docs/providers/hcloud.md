@@ -7,3 +7,8 @@
   sind NICHT eindeutig erzwungen.
 - Kein Nutzer-/Projektmodell im Plugin-Scope → membership_sync
   voraussichtlich nicht anwendbar; Befund in NOTES.md dokumentieren.
+
+## Limits (D-004)
+- Projekt-Kontingente (Server, Volumes, …): vorhanden. ZU ERHEBEN, ob
+  per API abfragbar oder nur als Fehlercode (resource_limit_exceeded)
+  sichtbar → entscheidet, ob CON-071 hier greift oder nur CON-070.

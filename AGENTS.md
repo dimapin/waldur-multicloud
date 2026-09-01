@@ -27,13 +27,18 @@ Nachbau aus dem Gedächtnis.
 
 ## Was hier liegt und welche Regeln gelten
 
-### docs/contracts/ — die Interface-Wahrheit
-- Wird ausschließlich vom Subagenten `upstream-scout` geschrieben
-  (Rollendefinition unter `.claude/agents/`).
-- Jede Aussage trägt Fundstelle: Datei + Zeilen + Upstream-Commit.
-- Änderungen werden als Git-Tag versioniert (`contract-vN`).
-  Provider-Repos pinnen diesen Tag; ein Contract-Update ist damit
-  immer sichtbar: 1 MR hier, danach je 1 MR pro Provider-Repo.
+### docs/contracts/ — der Contract (strukturiert, siehe dortiges README)
+- Getrennte Änderungshoheit: `upstream-api.md` ist BESCHREIBEND und
+  gehört allein dem `upstream-scout` (Fundstellenpflicht);
+  `conventions.md` und `capabilities.md` sind NORMATIV (CON-/CAP-IDs,
+  MUSS/SOLL/KANN) und ändern sich nur per Decision-Eintrag unter
+  decisions/ mit menschlicher Entscheidung.
+- Versionierung `contract-vMAJOR.MINOR.PATCH`; Breaking-Definition,
+  ID-Regeln (append-only, Deprecation statt Umdeutung) und die
+  Kopplung an Testkit-Tags stehen in docs/contracts/README.md.
+- Jede Änderung trägt eine CHANGELOG-Zeile; Provider-Repos pinnen das
+  Paar contract-/testkit-Tag mit gleichem X.Y: 1 MR hier (+ Tag),
+  danach je 1 Folge-MR pro Provider-Repo.
 
 ### testkit/ — installierbares Paket mit Contract-Tests
 - Enthält die provider-übergreifenden Contract-Tests und gemeinsame
@@ -51,8 +56,10 @@ Nachbau aus dem Gedächtnis.
 ### docs/agents/ — kanonische Rollendefinitionen
 - Herstellerneutrale Quelle der Wahrheit für die vier Rollen
   (upstream-scout, provider-implementer, test-engineer,
-  code-reviewer). Die `.claude/agents/`-Dateien hier und in den
-  Provider-Repos sind Kopien mit Claude-Code-Frontmatter.
+  code-reviewer). Tool-Wrapper sind Kopien mit tool-spezifischem
+  Frontmatter: `.claude/agents/*.md` (Claude Code) und
+  `.github/agents/*.agent.md` (GitHub Copilot in VS Code /
+  Coding Agent; Auswahl im Agent-Picker).
 - Sync-Regel: Rollenänderung zuerst hier, dann in die Wrapper
   kopieren. Wer einen Wrapper direkt ändert, erzeugt stille Drift —
   der Reviewer prüft das stichprobenartig.
