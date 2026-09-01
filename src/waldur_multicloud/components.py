@@ -1,8 +1,7 @@
 """Billing components, units and plans of an offering.
 
-Implements the checkable part of CON-010/011 (canonical names and units),
-CON-040/041/042/043 (component and price visibility, D-002) and the component
-bounds of the proposed CON-072 (D-004).
+Implements the checkable part of CON-010/011 (canonical names and units) and
+CON-040/041/042/043 (component and price visibility, D-002).
 """
 
 from __future__ import annotations
@@ -11,6 +10,7 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 from enum import Enum
 
+from .contract import get_requirement
 from .violations import ContractViolation, Violation
 
 
@@ -87,7 +87,10 @@ class Component:
                 f"component {self.name!r}: displayed unit {self.display_unit!r} "
                 f"differs from billed unit {self.unit!r}",
             )
-        if self.billing_type is BillingType.LIMIT:
+        if (
+            self.billing_type is BillingType.LIMIT
+            and get_requirement("CON-072").is_active
+        ):
             if self.min_value is None or self.max_value is None:
                 raise ContractViolation.single(
                     "CON-072",

@@ -102,11 +102,9 @@ def test_usage_based_component_needs_a_description() -> None:
     assert [v.requirement_id for v in violations] == ["CON-043"]
 
 
-def test_limit_based_component_needs_bounds() -> None:
-    """CON-072 (proposed): no unbounded orderable size."""
-    with pytest.raises(ContractViolation) as excinfo:
-        Component("cpu", "vCPU", BillingType.LIMIT)
-    assert excinfo.value.requirement_ids == ("CON-072",)
+def test_proposed_limit_bounds_are_not_enforced() -> None:
+    """CON-072 is not active in contract-v0.2.0."""
+    assert Component("cpu", "vCPU", BillingType.LIMIT).min_value is None
 
 
 def test_ordered_amount_is_checked_against_bounds() -> None:
